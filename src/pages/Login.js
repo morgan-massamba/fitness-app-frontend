@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import InputItem from '../components/InputItem';
 import useAuth from '../services/useAuth';
@@ -31,29 +31,26 @@ const Login = () => {
 
     return (
         <div className="container">
-            <h2 className="title">Login</h2>
             <form onSubmit={handleSubmit}>
+                <h2 className="title">Log In</h2>
                 <InputItem
                     handleChange={handleChange}
                     label="Email"
+                    type="email"
                     name="email"
                     placeholder="Veuillez entrez votre email"
                     errorMessage="Veuillez entrer un email valide"
                 />
                 <InputItem
                     handleChange={handleChange}
-                    label="Email"
-                    name="email"
-                    placeholder="Veuillez entrez votre email"
-                    errorMessage="Veuillez entrer un email valide"
+                    label="Password"
+                    type="password"
+                    name="password"
+                    pattern="^(?=.*[0-9])(?=.*[A-Z]).{8,}$"
+                    placeholder="Veuillez entrez votre mot de passe"
+                    errorMessage="Votre mot de passe doit contenir au moins 8 caractères, 1 majuscule et 1 nombre."
                 />
-                <InputItem
-                    handleChange={handleChange}
-                    label="Email"
-                    name="email"
-                    placeholder="Veuillez entrez votre email"
-                    errorMessage="Veuillez entrer un email valide"
-                />
+                <button className="btn-submit">Login</button>
             </form>
         </div>
     );

@@ -1,0 +1,29 @@
+//FONTS
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+//VARIABLES
+$black: #010101;
+$white: #fff;
+$grey-light: #f1f3f4;
+$grey: #e0e0e0;
+$grey-dark: #aeaeae;
+$red: #eb2b2b;
+$blue: #1976d2;
+
+$main-radius: 6px;
+
+//BREAKPOINTS RESPONSIVE
+$xs: 400px;
+$sm: 640px;
+$md: 768px;
+$lg: 1024px;
+$xl: 1200px;
+
+//MIXINS
+@mixin media-max($_min-width) {
+    @media screen and (max-width: $_min-width) {
+        & {
+            @content;
+        }
+    }
+}

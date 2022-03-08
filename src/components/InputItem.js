@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import '../styles/inputItem.scss';
 
 const InputItem = ({
@@ -17,7 +17,7 @@ const InputItem = ({
         <div className="groupItem">
             <label htmlFor={name}>{label}</label>
             <input
-                type="text"
+                type={type}
                 onChange={handleChange}
                 placeholder={placeholder}
                 name={name}

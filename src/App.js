@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { AuthContext } from './context/authContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './styles/style.scss';
+
+//COMPONENTS
 import Layout from './pages/Layout';
 import Home from './pages/Home';
 import Register from './pages/Register';

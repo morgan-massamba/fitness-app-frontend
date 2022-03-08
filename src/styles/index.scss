@@ -1,7 +1,7 @@
 //IMPORT
-@import '_mixin';
-@import '_navbar';
+@import './variables.scss';
 
+//CSS RESET
 * {
     margin: 0;
     padding: 0;
@@ -10,11 +10,13 @@
 }
 
 :root {
-    --text-primary: #010101;
-    --bg-primary: white;
+    font-size: 16px;
 }
 
 body {
     min-height: 100vh;
     margin: 0 auto;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    color: $black;
 }

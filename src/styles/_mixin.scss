@@ -1,7 +1,0 @@
-@mixin media-max($_min-width) {
-    @media screen and (max-width: $_min-width) {
-        & {
-            @content;
-        }
-    }
-}
