@@ -22,9 +22,9 @@ const App = () => {
         <AuthContext.Provider value={{ user: user, setUser: setUser }}>
             <Router>
                 <Routes>
-                    <Route element={<Layout />}>
+                    <Route path="/" element={<Layout />}>
                         <Route
-                            path="/"
+                            index
                             element={
                                 <PrivateRoute>
                                     <Home />
