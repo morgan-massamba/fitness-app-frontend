@@ -5,6 +5,7 @@ const InputItem = ({
     handleChange,
     label,
     type = 'text',
+    min,
     name,
     pattern,
     errorMessage = 'Ce champs est requis.',
@@ -22,6 +23,7 @@ const InputItem = ({
                 placeholder={placeholder}
                 name={name}
                 required
+                min={min}
                 pattern={pattern}
                 onBlur={() => setBlured(true)}
                 visited={blured.toString()}

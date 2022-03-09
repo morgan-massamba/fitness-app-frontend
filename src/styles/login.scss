@@ -1,19 +1,41 @@
 @import './variables.scss';
 
 .container {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
+    flex-wrap: wrap;
+    &-left {
+        width: 45%;
+        background-color: $blue;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 0;
+        @include media-max($md) {
+            display: none;
+        }
+    }
+    &-right {
+        width: 55%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 0;
+        @include media-max($md) {
+            width: 100%;
+        }
+    }
 }
 
 form {
-    width: 450px;
+    width: 70%;
+    border-radius: $main-radius;
+    box-shadow: $main-shadow;
     padding: 20px;
     .title {
         margin-bottom: 20px;
-        font-weight: 600;
+        font-weight: 500;
     }
     .btn-submit {
         width: 100%;
