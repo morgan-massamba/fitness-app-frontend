@@ -1,29 +1,104 @@
 @import './variables.scss';
 
-nav {
+.navbar {
     position: fixed;
     top: 0;
     left: 0;
-    width: 250px;
+    width: $header-width;
     height: 100vh;
-    background-color: $black;
-    color: $white;
+    background-color: $white;
+    color: $black;
+    border-right: 1px solid $grey;
     @include media-max($md) {
         width: 100%;
-        height: 100px;
-    }
-    ul {
+        height: $header-height;
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
         align-items: center;
-        justify-content: space-evenly;
-        height: 100%;
-        width: 100%;
+        justify-content: space-between;
+        padding: 0 20px;
+        border-right: none;
+        border-bottom: 1px solid $grey;
+    }
+    @include media-max($xs) {
+        height: $header-height-mobile;
+    }
+    .logo {
+        margin-bottom: 150px;
+        text-align: center;
         @include media-max($md) {
-            flex-direction: row;
+            margin-bottom: 0;
         }
-        li {
-            padding: 20px;
+    }
+    nav {
+        &.show {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: $white;
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        @include media-max($md) {
+            display: none;
+        }
+        ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            width: 100%;
+            li {
+                padding: 20px 20px 20px 50px;
+                width: 100%;
+                @include media-max($md) {
+                    padding: 20px;
+                }
+                a {
+                    color: $black;
+                    font-size: 1rem;
+                    text-decoration: none;
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    @include media-max($md) {
+                        justify-content: center;
+                    }
+                    svg {
+                        font-size: 1.6rem;
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+    }
+    .avatar {
+        background-color: aqua;
+        @include media-max($md) {
+            display: none;
+        }
+    }
+    .hamburger-icon {
+        display: none;
+        font-size: 1.6rem;
+        cursor: pointer;
+        @include media-max($md) {
+            display: block;
+        }
+    }
+    .close-icon {
+        display: none;
+        cursor: pointer;
+        position: absolute;
+        right: 20px;
+        top: 30px;
+        font-size: 2rem;
+        @include media-max($md) {
+            display: block;
         }
     }
 }

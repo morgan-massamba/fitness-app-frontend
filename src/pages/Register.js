@@ -4,8 +4,7 @@ import InputItem from '../components/InputItem';
 import useAuth from '../services/useAuth';
 import useAxios from '../services/useAxios';
 
-//Same style as login page
-import '../styles/login.scss';
+import '../styles/register.scss';
 
 const Register = () => {
     let axiosInstance = useAxios();
@@ -37,7 +36,7 @@ const Register = () => {
     };
 
     return (
-        <div className="container">
+        <div className="register">
             <div className="container-left">
                 <div>
                     <h2>My Fitness App</h2>

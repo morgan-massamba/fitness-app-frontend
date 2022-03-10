@@ -30,7 +30,7 @@ const Login = () => {
     };
 
     return (
-        <div className="container">
+        <div className="login">
             <div className="container-left">
                 <div>
                     <h2>My Fitness App</h2>

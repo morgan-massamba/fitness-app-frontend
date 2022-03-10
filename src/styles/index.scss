@@ -20,3 +20,18 @@ body {
     font-weight: 400;
     color: $black;
 }
+
+main {
+    padding-left: calc($header-width + $padding-main);
+    padding-right: $padding-main;
+    padding-top: $padding-main;
+    padding-bottom: $padding-main;
+    @include media-max($md) {
+        padding-top: calc($header-height + $padding-main);
+        padding-left: $padding-main;
+    }
+    @include media-max($xs) {
+        padding-top: calc($header-height-mobile + $padding-mobile);
+        padding-left: $padding-mobile;
+    }
+}
