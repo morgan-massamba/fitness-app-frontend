@@ -7,7 +7,9 @@ import Layout from './pages/Layout';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
-import List from './pages/List';
+import Exercises from './pages/Exercises';
+import Training from './pages/Training';
+import Account from './pages/Account';
 import PrivateRoute from './components/PrivateRoute';
 import NotFound from './pages/NotFound';
 
@@ -32,10 +34,26 @@ const App = () => {
                             }
                         />
                         <Route
-                            path="list"
+                            path="training"
                             element={
                                 <PrivateRoute>
-                                    <List />
+                                    <Training />
+                                </PrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="exercises"
+                            element={
+                                <PrivateRoute>
+                                    <Exercises />
+                                </PrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="account"
+                            element={
+                                <PrivateRoute>
+                                    <Account />
                                 </PrivateRoute>
                             }
                         />

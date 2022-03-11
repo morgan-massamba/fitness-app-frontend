@@ -27,11 +27,13 @@ main {
     padding-top: $padding-main;
     padding-bottom: $padding-main;
     @include media-max($md) {
-        padding-top: calc($header-height + $padding-main);
         padding-left: $padding-main;
+        padding-top: calc($header-height + $padding-main);
     }
     @include media-max($xs) {
-        padding-top: calc($header-height-mobile + $padding-mobile);
         padding-left: $padding-mobile;
+        padding-right: $padding-mobile;
+        padding-top: calc($header-height-mobile + $padding-mobile);
+        padding-bottom: $padding-mobile;
     }
 }

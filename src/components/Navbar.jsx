@@ -1,6 +1,6 @@
 import '../styles/navbar.scss';
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 //ICONS
 import { BiHomeAlt } from 'react-icons/bi';
@@ -27,28 +27,48 @@ const Navbar = () => {
             <nav className={showMenu ? 'show' : ''}>
                 <ul>
                     <li>
-                        <Link to="/">
+                        <NavLink
+                            to="/"
+                            className={({ isActive }) =>
+                                isActive ? 'activeLinkClass' : ''
+                            }
+                        >
                             <BiHomeAlt />
                             <span>Accueil</span>
-                        </Link>
+                        </NavLink>
                     </li>
                     <li>
-                        <Link to="/training">
+                        <NavLink
+                            to="/training"
+                            className={({ isActive }) =>
+                                isActive ? 'activeLinkClass' : ''
+                            }
+                        >
                             <IoFitnessOutline />
                             <span>Entrainement</span>
-                        </Link>
+                        </NavLink>
                     </li>
                     <li>
-                        <Link to="/list">
+                        <NavLink
+                            to="/exercises"
+                            className={({ isActive }) =>
+                                isActive ? 'activeLinkClass' : ''
+                            }
+                        >
                             <IoMdFitness />
                             <span>Exercices</span>
-                        </Link>
+                        </NavLink>
                     </li>
                     <li>
-                        <Link to="/account">
+                        <NavLink
+                            to="/account"
+                            className={({ isActive }) =>
+                                isActive ? 'activeLinkClass' : ''
+                            }
+                        >
                             <VscAccount />
                             <span>Mon compte</span>
-                        </Link>
+                        </NavLink>
                     </li>
                 </ul>
                 <RiCloseCircleLine

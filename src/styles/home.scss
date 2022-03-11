@@ -1,0 +1,55 @@
+@import './variables.scss';
+
+.home {
+    .greetings {
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+    .happy {
+        color: $grey-dark;
+    }
+    .summary {
+        background-color: $brown-light;
+        border-radius: $card-radius;
+        padding: 25px 30px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        margin-top: 30px;
+        @include media-max($xs) {
+            padding: 25px 20px;
+        }
+        @include media-max($xs) {
+            margin-top: 20px;
+            padding: 25px 0;
+        }
+        &-item {
+            width: 33%;
+            text-align: center;
+            &__icon {
+                margin: 0 auto;
+                width: 40px;
+                height: 40px;
+                background-color: $brown;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.5rem;
+                border-radius: 50%;
+                margin-bottom: 20px;
+            }
+            &__theme {
+                color: $grey-dark;
+                margin-bottom: 2px;
+            }
+            &__value {
+                font-weight: 600;
+                font-size: 2rem;
+                margin-bottom: 2px;
+            }
+            &__unit {
+                color: $grey-dark;
+            }
+        }
+    }
+}
