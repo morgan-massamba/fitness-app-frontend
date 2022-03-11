@@ -53,24 +53,27 @@
             justify-content: space-evenly;
             width: 100%;
             li {
-                padding: 20px 20px 20px 50px;
-                width: 100%;
-                @include media-max($md) {
-                    padding: 20px;
+                width: 200px;
+                margin-bottom: 20px;
+                border-radius: $main-radius;
+                transition: all 150ms ease;
+                &:hover {
+                    background-color: tan;
+                }
+                &:last-child {
+                    margin-bottom: 0;
                 }
                 a {
-                    color: $black;
-                    font-size: 1rem;
-                    text-decoration: none;
                     display: flex;
                     justify-content: flex-start;
                     align-items: center;
-                    @include media-max($md) {
-                        justify-content: center;
-                    }
+                    padding: 12px 20px;
+                    font-size: 1rem;
+                    color: $black;
+                    text-decoration: none;
                     svg {
                         font-size: 1.6rem;
-                        margin-right: 10px;
+                        margin-right: 20px;
                     }
                 }
             }
