@@ -54,12 +54,12 @@
             width: 100%;
             li {
                 width: 200px;
-                margin-bottom: 20px;
+                margin-bottom: 10px;
                 border-radius: $main-radius;
                 overflow: hidden;
                 transition: all 150ms ease;
                 &:hover {
-                    background-color: $grey-light;
+                    background-color: $brown-light;
                 }
                 &:last-child {
                     margin-bottom: 0;

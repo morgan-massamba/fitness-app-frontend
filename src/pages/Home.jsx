@@ -3,6 +3,7 @@ import '../styles/home.scss';
 import { GiWeightScale, GiBodyHeight } from 'react-icons/gi';
 import { BiFace } from 'react-icons/bi';
 import { useEffect, useState } from 'react';
+import TrainingItem from '../components/TrainingItem';
 
 const Home = () => {
     let axiosInstance = useAxios();
@@ -20,6 +21,7 @@ const Home = () => {
         <div className="home">
             <p className="greetings">Bonjour Morgan</p>
             <p className="happy">Heureux de te revoir !</p>
+
             <div className="summary">
                 <div className="summary-item">
                     <div className="summary-item__icon">
@@ -45,6 +47,17 @@ const Home = () => {
                     <div className="summary-item__value">{summary.height}</div>
                     <div className="summary-item__unit">cm</div>
                 </div>
+            </div>
+
+            <p className="subtitle">Derniers entrainements</p>
+
+            <div className="training-list">
+                <TrainingItem />
+                <TrainingItem />
+                <TrainingItem />
+                <TrainingItem />
+                <TrainingItem />
+                <TrainingItem />
             </div>
         </div>
     );

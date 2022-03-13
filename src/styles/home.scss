@@ -8,6 +8,9 @@
     .happy {
         color: $grey-dark;
     }
+    .subtitle {
+        font-weight: 500;
+    }
     .summary {
         background-color: $brown-light;
         border-radius: $card-radius;
@@ -16,6 +19,7 @@
         flex-wrap: wrap;
         justify-content: space-evenly;
         margin-top: 30px;
+        margin-bottom: 30px;
         @include media-max($xs) {
             padding: 25px 20px;
         }
@@ -50,6 +54,15 @@
             &__unit {
                 color: $grey-dark;
             }
+        }
+    }
+    .training-list {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 30px;
+        @include media-max($xs) {
+            margin-top: 20px;
         }
     }
 }

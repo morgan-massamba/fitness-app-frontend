@@ -1,0 +1,10 @@
+@import './variables.scss';
+
+.training-item {
+    padding: 25px 30px;
+    background-color: $grey-light;
+    flex: 1;
+    height: 250px;
+    margin-right: 20px;
+    border-radius: $card-radius;
+}
