@@ -2,9 +2,36 @@
 
 .training-item {
     padding: 25px 30px;
+    overflow: hidden;
     background-color: $grey-light;
-    flex: 1;
-    height: 250px;
-    margin-right: 20px;
     border-radius: $card-radius;
+    position: relative;
+    cursor: pointer;
+    &__title {
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
+    &__content {
+        margin-top: 10px;
+    }
+    &__time {
+        margin-top: 10px;
+        font-style: italic;
+    }
+    &:hover .overlay {
+        opacity: 0.1;
+    }
+    .overlay {
+        background-color: $black;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: opacity 300ms ease;
+    }
 }

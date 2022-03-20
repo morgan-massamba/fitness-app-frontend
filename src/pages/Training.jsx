@@ -1,7 +1,9 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 
 const Training = () => {
-    return <div>Training</div>;
+    const { id } = useParams();
+    return <div>Training numéro {id}</div>;
 };
 
 export default Training;

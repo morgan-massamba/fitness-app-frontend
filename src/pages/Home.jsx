@@ -4,14 +4,29 @@ import { GiWeightScale, GiBodyHeight } from 'react-icons/gi';
 import { BiFace } from 'react-icons/bi';
 import { useEffect, useState } from 'react';
 import TrainingItem from '../components/TrainingItem';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
     let axiosInstance = useAxios();
+    const navigate = useNavigate();
     const [summary, setSummary] = useState({
         age: 28,
         weight: 85,
         height: 185,
     });
+
+    const trainings = [
+        { id: 1, title: 'Seance bras', numberOfExercices: 4, time: '1h15' },
+        { id: 2, title: 'Seance pec', numberOfExercices: 5, time: '1h00' },
+        { id: 3, title: 'Seance dos', numberOfExercices: 1, time: '45min' },
+        { id: 4, title: 'Seance biceps', numberOfExercices: 3, time: '1h' },
+        { id: 5, title: 'Seance cardio', numberOfExercices: 8, time: '15min' },
+        { id: 6, title: 'Seance fullbody', numberOfExercices: 4, time: '1h15' },
+    ];
+
+    const redirectToTraining = (id) => {
+        navigate('/training/' + id);
+    };
 
     useEffect(() => {
         console.log('home page');
@@ -49,15 +64,18 @@ const Home = () => {
                 </div>
             </div>
 
-            <p className="subtitle">Derniers entrainements</p>
+            <p className="subtitle">Mes entrainements</p>
 
             <div className="training-list">
-                <TrainingItem />
-                <TrainingItem />
-                <TrainingItem />
-                <TrainingItem />
-                <TrainingItem />
-                <TrainingItem />
+                {trainings.map((item) => (
+                    <TrainingItem
+                        key={item.id}
+                        title={item.title}
+                        numberOfExercices={item.numberOfExercices}
+                        time={item.time}
+                        handleClick={() => redirectToTraining(item.id)}
+                    />
+                ))}
             </div>
         </div>
     );

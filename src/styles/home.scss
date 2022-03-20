@@ -10,6 +10,7 @@
     }
     .subtitle {
         font-weight: 500;
+        font-size: 1.2rem;
     }
     .summary {
         background-color: $brown-light;
@@ -57,10 +58,16 @@
         }
     }
     .training-list {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
         margin-top: 30px;
+        @include media-max($lg) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @include media-max($md) {
+            grid-template-columns: repeat(1, 1fr);
+        }
         @include media-max($xs) {
             margin-top: 20px;
         }

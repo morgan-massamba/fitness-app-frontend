@@ -12,6 +12,7 @@ import Training from './pages/Training';
 import Account from './pages/Account';
 import PrivateRoute from './components/PrivateRoute';
 import NotFound from './pages/NotFound';
+import TrainingCreate from './pages/TrainingCreate';
 
 const App = () => {
     const [user, setUser] = useState(
@@ -34,7 +35,15 @@ const App = () => {
                             }
                         />
                         <Route
-                            path="training"
+                            path="training/new"
+                            element={
+                                <PrivateRoute>
+                                    <TrainingCreate />
+                                </PrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="training/:id"
                             element={
                                 <PrivateRoute>
                                     <Training />
