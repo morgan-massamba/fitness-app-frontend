@@ -1,0 +1,89 @@
+@import './variables.scss';
+
+.training-create {
+    .heading {
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+    form {
+        box-shadow: $main-shadow;
+        border-radius: $main-radius;
+        min-height: 70vh;
+        width: 100%;
+        padding: 20px;
+        .group-item {
+            margin-bottom: 20px;
+            font-size: 1rem;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+        .group-item-flex {
+            display: flex;
+            align-items: flex-end;
+            &__exercise {
+                width: 40%;
+                margin-right: 20px;
+            }
+            &__sets {
+                margin-right: 20px;
+                width: 15%;
+            }
+            &__reps {
+                width: 15%;
+            }
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input,
+        select {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid $grey;
+            border-radius: $main-radius;
+            outline: none;
+            &::placeholder {
+                color: $grey-dark;
+            }
+        }
+    }
+    .add-icon {
+        font-size: 1.6rem;
+        color: $blue;
+        display: block;
+        cursor: pointer;
+        margin-bottom: 10px;
+    }
+    .remove-icon {
+        font-size: 1.6rem;
+        color: $red;
+        display: block;
+        cursor: pointer;
+        margin-bottom: 10px;
+        margin-left: 20px;
+    }
+    .action-btn {
+        color: $white;
+        width: 200px;
+        border: none;
+        padding: 10px;
+        border-radius: $main-radius;
+        font-size: 1rem;
+        cursor: pointer;
+        @include media-max($sm) {
+            width: fit-content;
+        }
+    }
+    .add-btn {
+        background-color: $blue;
+    }
+    .submit-btn {
+        margin-left: 20px;
+        background-color: $black;
+    }
+}
