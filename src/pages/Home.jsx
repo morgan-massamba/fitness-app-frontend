@@ -16,12 +16,12 @@ const Home = () => {
     });
 
     const trainings = [
-        { id: 1, title: 'Seance bras', numberOfExercices: 4, time: '1h15' },
-        { id: 2, title: 'Seance pec', numberOfExercices: 5, time: '1h00' },
-        { id: 3, title: 'Seance dos', numberOfExercices: 1, time: '45min' },
-        { id: 4, title: 'Seance biceps', numberOfExercices: 3, time: '1h' },
-        { id: 5, title: 'Seance cardio', numberOfExercices: 8, time: '15min' },
-        { id: 6, title: 'Seance fullbody', numberOfExercices: 4, time: '1h15' },
+        { id: 1, title: 'Seance bras', numberOfExercices: 4, level: 1 },
+        { id: 2, title: 'Seance pec', numberOfExercices: 5, level: 2 },
+        { id: 3, title: 'Seance dos', numberOfExercices: 1, level: 3 },
+        { id: 4, title: 'Seance biceps', numberOfExercices: 3, level: 1 },
+        { id: 5, title: 'Seance cardio', numberOfExercices: 8, level: 2 },
+        { id: 6, title: 'Seance fullbody', numberOfExercices: 4, level: 3 },
     ];
 
     const redirectToTraining = (id) => {
@@ -72,7 +72,7 @@ const Home = () => {
                         key={item.id}
                         title={item.title}
                         numberOfExercices={item.numberOfExercices}
-                        time={item.time}
+                        level={item.level}
                         handleClick={() => redirectToTraining(item.id)}
                     />
                 ))}

@@ -1,0 +1,41 @@
+@import './variables.scss';
+
+.exercise-list {
+    .heading {
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+    table {
+        width: 100%;
+        box-shadow: $main-shadow;
+        border: 1px solid $black;
+        border-radius: $main-radius;
+        // border-collapse: collapse;
+        th {
+            text-align: left;
+            font-weight: 500;
+            height: 60px;
+            padding: 0 20px;
+            @include media-max($xs) {
+                padding: 0 10px;
+            }
+        }
+        td {
+            border-top: 1px solid $black;
+            border-left: 1px solid $black;
+            border-right: 1px solid $black;
+            padding: 0 20px;
+            height: 40px;
+            &:first-child {
+                border-left: none;
+            }
+            &:last-child {
+                border-right: none;
+            }
+            @include media-max($xs) {
+                padding: 0 10px;
+            }
+        }
+    }
+}
