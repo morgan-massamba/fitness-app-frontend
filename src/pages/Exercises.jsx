@@ -14,20 +14,34 @@ const Exercises = () => {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Developpé couché</td>
-                        <td>Pectoraux</td>
+                        <td>
+                            <span className="name">Developpé couché</span>
+                        </td>
+                        <td>
+                            <span className="categorie bg-green">
+                                Pectoraux
+                            </span>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Tirage nuque</td>
-                        <td>Dos</td>
+                        <td>
+                            <span className="name">Tirage nuque</span>
+                        </td>
+                        <td>
+                            <span className="categorie bg-yellow">Dos</span>
+                        </td>
                     </tr>
                     <tr>
                         <td>Squat</td>
-                        <td>Jambes</td>
+                        <td>
+                            <span className="categorie bg-red">Jambes</span>
+                        </td>
                     </tr>
                     <tr>
                         <td>Curl biceps</td>
-                        <td>Bras</td>
+                        <td>
+                            <span className="categorie bg-blue">Bras</span>
+                        </td>
                     </tr>
                 </tbody>
             </table>

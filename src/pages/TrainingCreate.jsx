@@ -40,16 +40,26 @@ const TrainingCreate = () => {
         <div className="training-create" onSubmit={handleSubmit}>
             <h2 className="heading">Créer ton entrainement !</h2>
             <form>
-                <div className="group-item">
-                    <label htmlFor="title">Titre</label>
-                    <input
-                        type="text"
-                        id="title"
-                        required
-                        value={trainingTitle}
-                        onChange={(e) => setTrainingTitle(e.target.value)}
-                        placeholder="Titre de l'entrainement"
-                    />
+                <div className="group-item group-item__row">
+                    <div className="group-item__title">
+                        <label htmlFor="title">Titre</label>
+                        <input
+                            type="text"
+                            id="title"
+                            required
+                            value={trainingTitle}
+                            onChange={(e) => setTrainingTitle(e.target.value)}
+                            placeholder="Titre de l'entrainement"
+                        />
+                    </div>
+                    <div className="group-item__level">
+                        <label htmlFor="level">Niveau</label>
+                        <select>
+                            <option value="Débutant">Débutant</option>
+                            <option value="Confirmé">Confirmé</option>
+                            <option value="Expert">Expert</option>
+                        </select>
+                    </div>
                 </div>
                 {formData.map((element, index) => (
                     <div className="group-item group-item-flex" key={index}>

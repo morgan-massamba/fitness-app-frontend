@@ -9,15 +9,37 @@
     form {
         box-shadow: $main-shadow;
         border-radius: $main-radius;
-        background-color: $whitesmoke;
+        background-color: $white;
         min-height: 70vh;
         width: 100%;
         padding: 20px;
         .group-item {
             margin-bottom: 20px;
+            @include media-max($sm) {
+                margin-bottom: 15px;
+            }
             font-size: 1rem;
             &:last-child {
                 margin-bottom: 0;
+            }
+            &__row {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            &__title {
+                width: 60%;
+                margin-right: 20px;
+                @include media-max($sm) {
+                    width: 100%;
+                    margin-right: 0;
+                    margin-bottom: 15px;
+                }
+            }
+            &__level {
+                width: 30%;
+                @include media-max($sm) {
+                    width: 50%;
+                }
             }
         }
         .group-item-flex {
@@ -48,6 +70,7 @@
             border: 1px solid $grey;
             border-radius: $main-radius;
             outline: none;
+            background-color: $whitesmoke;
             &::placeholder {
                 color: $grey-dark;
             }
