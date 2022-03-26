@@ -13,6 +13,7 @@ import Account from './pages/Account';
 import PrivateRoute from './components/PrivateRoute';
 import NotFound from './pages/NotFound';
 import TrainingCreate from './pages/TrainingCreate';
+import Exercise from './pages/Exercise';
 
 const App = () => {
     const [user, setUser] = useState(
@@ -55,6 +56,14 @@ const App = () => {
                             element={
                                 <PrivateRoute>
                                     <Exercises />
+                                </PrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="exercises/:id"
+                            element={
+                                <PrivateRoute>
+                                    <Exercise />
                                 </PrivateRoute>
                             }
                         />

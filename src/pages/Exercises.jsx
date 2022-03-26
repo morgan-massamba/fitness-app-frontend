@@ -1,7 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/exercises.scss';
 
 const Exercises = () => {
+    const navigate = useNavigate();
+
+    const showDetails = (id) => {
+        navigate('/exercises/' + id);
+    };
+
     return (
         <div className="exercise-list">
             <h2 className="heading">Liste des exercises</h2>
@@ -10,6 +17,7 @@ const Exercises = () => {
                     <tr>
                         <th>Nom</th>
                         <th>Catégorie</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -22,6 +30,9 @@ const Exercises = () => {
                                 Pectoraux
                             </span>
                         </td>
+                        <td className="details">
+                            <span onClick={() => showDetails(4)}>Détails</span>
+                        </td>
                     </tr>
                     <tr>
                         <td>
@@ -30,17 +41,26 @@ const Exercises = () => {
                         <td>
                             <span className="categorie bg-yellow">Dos</span>
                         </td>
+                        <td className="details">
+                            <span onClick={() => showDetails(4)}>Détails</span>
+                        </td>
                     </tr>
                     <tr>
                         <td>Squat</td>
                         <td>
                             <span className="categorie bg-red">Jambes</span>
                         </td>
+                        <td className="details">
+                            <span onClick={() => showDetails(4)}>Détails</span>
+                        </td>
                     </tr>
                     <tr>
                         <td>Curl biceps</td>
                         <td>
                             <span className="categorie bg-blue">Bras</span>
+                        </td>
+                        <td className="details">
+                            <span onClick={() => showDetails(4)}>Détails</span>
                         </td>
                     </tr>
                 </tbody>

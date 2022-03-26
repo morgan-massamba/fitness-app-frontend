@@ -68,6 +68,7 @@ const TrainingCreate = () => {
                             <select
                                 name="title"
                                 id="exercise"
+                                required
                                 value={element.title}
                                 onChange={(e) => handleChange(e, index)}
                             >
@@ -87,7 +88,7 @@ const TrainingCreate = () => {
                                 name="sets"
                                 id="sets"
                                 required
-                                min={0}
+                                min={1}
                                 max={20}
                                 value={element.sets}
                                 onChange={(e) => handleChange(e, index)}
@@ -100,7 +101,7 @@ const TrainingCreate = () => {
                                 name="reps"
                                 id="reps"
                                 required
-                                min={0}
+                                min={1}
                                 max={50}
                                 value={element.reps}
                                 onChange={(e) => handleChange(e, index)}

@@ -73,7 +73,7 @@
                     color: $black;
                     text-decoration: none;
                     &.activeLinkClass {
-                        background-color: $black;
+                        background: $bg-g-black;
                         color: $white;
                     }
                     svg {

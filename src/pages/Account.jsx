@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import '../styles/account.scss';
 
 const Account = () => {
-  return (
-    <div>Account</div>
-  )
-}
+    return (
+        <div className="account">
+            <h2 className="heading">Mon compte</h2>
+        </div>
+    );
+};
 
-export default Account
+export default Account;

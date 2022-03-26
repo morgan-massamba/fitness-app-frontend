@@ -18,9 +18,12 @@
             @include media-max($sm) {
                 margin-bottom: 15px;
             }
-            font-size: 1rem;
             &:last-child {
                 margin-bottom: 0;
+                margin-top: 30px;
+                @include media-max($sm) {
+                    margin-top: 25px;
+                }
             }
             &__row {
                 display: flex;
@@ -104,10 +107,10 @@
         }
     }
     .add-btn {
-        background-color: $blue;
+        background: $bg-g-blue;
     }
     .submit-btn {
         margin-left: 20px;
-        background-color: $black;
+        background: $bg-g-black;
     }
 }

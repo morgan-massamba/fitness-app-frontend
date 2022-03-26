@@ -17,8 +17,8 @@
             padding: 0 20px;
             color: $black;
             border-bottom: 0.5px solid $black;
-            @include media-max($xs) {
-                padding: 0 10px;
+            @include media-max($sm) {
+                padding: 0;
             }
         }
         td {
@@ -26,11 +26,21 @@
             padding: 0 20px;
             height: 50px;
             font-size: 0.9rem;
-            .name {
-                cursor: pointer;
+            &.details {
+                text-align: center;
+                span {
+                    cursor: pointer;
+                    background: $bg-g-black;
+                    color: $white;
+                    padding: 4px 10px;
+                    border-radius: $main-radius;
+                    text-align: center;
+                    display: inline-block;
+                }
             }
             .categorie {
                 padding: 4px 10px;
+                border-radius: $main-radius;
                 &.bg-green {
                     background-color: #dffae6;
                     color: #3ab93a;
@@ -48,8 +58,8 @@
                     color: $red;
                 }
             }
-            @include media-max($xs) {
-                padding: 0 10px;
+            @include media-max($sm) {
+                padding: 0;
             }
         }
     }
