@@ -6,4 +6,80 @@
         font-weight: 500;
         margin-bottom: 20px;
     }
+    form {
+        box-shadow: $main-shadow;
+        border-radius: $main-radius;
+        background-color: $white;
+        width: 100%;
+        padding: 20px;
+        .group-item {
+            margin-bottom: 20px;
+            @include media-max($sm) {
+                margin-bottom: 15px;
+            }
+            &:last-child {
+                margin-bottom: 0;
+                margin-top: 30px;
+                @include media-max($sm) {
+                    margin-top: 25px;
+                }
+            }
+        }
+        .group-item-flex {
+            display: flex;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            &__age {
+                flex: 1;
+                margin-right: 20px;
+                @include media-max($sm) {
+                    flex: 0 0 100%;
+                    margin-right: 0;
+                    margin-bottom: 15px;
+                }
+            }
+            &__weight {
+                margin-right: 20px;
+                flex: 1;
+                @include media-max($sm) {
+                    flex: 0 0 100%;
+                    margin-right: 0;
+                    margin-bottom: 15px;
+                }
+            }
+            &__height {
+                flex: 1;
+                @include media-max($sm) {
+                    flex: 0 0 100%;
+                }
+            }
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid $grey;
+            border-radius: $main-radius;
+            outline: none;
+            background-color: $whitesmoke;
+            &::placeholder {
+                color: $grey-dark;
+            }
+        }
+        .submit-btn {
+            color: $white;
+            width: 100%;
+            border: none;
+            padding: 10px;
+            border-radius: $main-radius;
+            font-size: 1rem;
+            cursor: pointer;
+            background: $bg-g-black;
+        }
+    }
 }
