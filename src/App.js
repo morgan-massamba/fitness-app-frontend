@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { AuthContext } from './context/authContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 //COMPONENTS
 import Layout from './pages/Layout';
 import Home from './pages/Home';
@@ -24,6 +27,7 @@ const App = () => {
 
     return (
         <AuthContext.Provider value={{ user: user, setUser: setUser }}>
+            <ToastContainer />
             <Router>
                 <Routes>
                     <Route path="/" element={<Layout />}>

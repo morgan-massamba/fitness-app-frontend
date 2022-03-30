@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import InputItem from '../components/InputItem';
 import useAuth from '../services/useAuth';
 import useAxios from '../services/useAxios';
-
+import { toast } from 'react-toastify';
 import '../styles/register.scss';
 
 const Register = () => {
@@ -26,9 +26,52 @@ const Register = () => {
         }
     }, [user, navigate]);
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log('handlesubmit', formData);
+        if (
+            !formData.firstname ||
+            !formData.lastname ||
+            !formData.age ||
+            !formData.email ||
+            !formData.password
+        ) {
+            return;
+        }
+
+        const body = { ...formData };
+        body.age = parseInt(body.age);
+
+        try {
+            const result = await axiosInstance.post('auth/register', body);
+            const successMessage = result?.data?.message;
+            if (successMessage) {
+                toast.success(successMessage, {
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                });
+            }
+            setForm({
+                firstname: '',
+                lastname: '',
+                age: null,
+                email: '',
+                password: '',
+            });
+            navigate('/login');
+        } catch (error) {
+            const errorMessage = error?.response?.data?.error?.sqlMessage;
+            if (errorMessage) {
+                toast.error(errorMessage, {
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                });
+            } else {
+                toast.error('Une erreur est survenue', {
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                });
+            }
+        }
     };
 
     const handleChange = ({ target: { name, value } }) => {
@@ -63,7 +106,8 @@ const Register = () => {
                         label="Age"
                         name="age"
                         type="number"
-                        min={0}
+                        min={1}
+                        max={150}
                         placeholder="Veuillez entrez votre âge"
                         errorMessage="Veuillez saisir un âge correct."
                     />

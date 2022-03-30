@@ -3,10 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import InputItem from '../components/InputItem';
 import useAuth from '../services/useAuth';
 import useAxios from '../services/useAxios';
+import { toast } from 'react-toastify';
 import '../styles/login.scss';
 
 const Login = () => {
     let axiosInstance = useAxios();
+
     const { user } = useAuth();
     const [formData, setForm] = useState({
         email: '',
@@ -20,9 +22,41 @@ const Login = () => {
         }
     }, [user, navigate]);
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log('handlesubmit', formData);
+
+        if (!formData.email || !formData.password) {
+            return;
+        }
+
+        try {
+            const result = await axiosInstance.post('auth/login', formData);
+            const successMessage = result?.data?.message;
+            if (successMessage) {
+                toast.success(successMessage, {
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                });
+            }
+            setForm({
+                email: '',
+                password: '',
+            });
+            navigate('/');
+        } catch (error) {
+            const errorMessage = error?.response?.data?.message;
+            if (errorMessage) {
+                toast.error(errorMessage, {
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                });
+            } else {
+                toast.error('Une erreur est survenue', {
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                });
+            }
+        }
     };
 
     const handleChange = ({ target: { name, value } }) => {
