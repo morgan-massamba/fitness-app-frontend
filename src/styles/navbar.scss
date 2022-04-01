@@ -6,9 +6,10 @@
     left: 0;
     width: $header-width;
     height: 100vh;
-    background-color: $white;
+    background-color: $brown;
     color: $black;
     border-right: 1px solid $grey;
+    z-index: 1;
     @include media-max($md) {
         width: 100%;
         height: $header-height;
@@ -24,20 +25,33 @@
         height: $header-height-mobile;
     }
     .logo {
-        margin-bottom: 150px;
-        text-align: center;
+        height: $logo-height;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            @include media-max($md) {
+                width: 60px;
+                height: 60px;
+            }
+        }
         @include media-max($md) {
-            margin-bottom: 0;
+            height: 100%;
         }
     }
     nav {
+        height: calc(100vh - $logo-height);
+        background: $brown;
+        position: relative;
         &.show {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100vh;
-            background: $white;
             z-index: 999;
             display: flex;
             justify-content: center;
@@ -62,7 +76,9 @@
                     background-color: $brown-light;
                 }
                 &:last-child {
+                    position: absolute;
                     margin-bottom: 0;
+                    bottom: 20px;
                 }
                 a {
                     display: flex;

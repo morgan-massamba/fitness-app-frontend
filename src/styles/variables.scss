@@ -7,11 +7,12 @@ $white: #fff;
 $whitesmoke: #f5f5f561;
 $grey-light: #f1f3f4;
 $grey: #e0e0e0;
-$grey-dark: #aeaeae;
+$grey-dark: #7b7b7b;
 $red: #eb2b2b;
 $blue: #1976d2;
-$brown-light: #f9f8f3;
+$brown-light: #f9f7ed;
 $brown: #e4e0d5;
+$brown-dark:#bbb6aa;
 $bg-g-black: linear-gradient(to right, #323232, #262626);
 $bg-g-blue: linear-gradient(to right, #3490ec, #1976d2);
 
@@ -19,6 +20,7 @@ $bg-g-blue: linear-gradient(to right, #3490ec, #1976d2);
 $header-width: 250px;
 $header-height: 100px;
 $header-height-mobile: 80px;
+$logo-height:150px;
 
 //PADDING
 $padding-main: 40px;
@@ -27,7 +29,7 @@ $padding-mobile: 20px;
 //RADIUS & BOX-SHADOW
 $main-radius: 8px;
 $card-radius: 25px;
-$main-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+$main-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 
 //BREAKPOINTS RESPONSIVE
 $xs: 400px;

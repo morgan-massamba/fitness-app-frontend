@@ -1,6 +1,6 @@
 import '../styles/navbar.scss';
 import { useEffect, useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 //ICONS
 import { BiHomeAlt } from 'react-icons/bi';
@@ -9,8 +9,13 @@ import { RiCloseCircleLine } from 'react-icons/ri';
 import { IoFitnessOutline } from 'react-icons/io5';
 import { IoMdFitness } from 'react-icons/io';
 import { VscAccount } from 'react-icons/vsc';
+import { MdLogout } from 'react-icons/md';
+import useAuth from '../services/useAuth';
 
 const Navbar = () => {
+    const { setUser } = useAuth();
+    const navigate = useNavigate();
+
     const [showMenu, setShowMenu] = useState(false);
     const { pathname } = useLocation();
 
@@ -19,9 +24,17 @@ const Navbar = () => {
         setShowMenu(false);
     }, [pathname]);
 
+    const logout = () => {
+        localStorage.removeItem('user');
+        setUser(null);
+        navigate('/login');
+    };
+
     return (
         <div className="navbar">
-            <div className="logo">MyFitness App</div>
+            <div className="logo">
+                <img src="24-hour-fitness.svg" alt="logo" />
+            </div>
 
             {/* MAIN NAVIGATION */}
             <nav className={showMenu ? 'show' : ''}>
@@ -68,6 +81,12 @@ const Navbar = () => {
                         >
                             <VscAccount />
                             <span>Mon compte</span>
+                        </NavLink>
+                    </li>
+                    <li onClick={logout}>
+                        <NavLink to="#">
+                            <MdLogout />
+                            <span>Déconnexion</span>
                         </NavLink>
                     </li>
                 </ul>

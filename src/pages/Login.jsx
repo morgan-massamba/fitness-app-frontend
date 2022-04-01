@@ -9,7 +9,7 @@ import '../styles/login.scss';
 const Login = () => {
     let axiosInstance = useAxios();
 
-    const { user } = useAuth();
+    const { user, setUser } = useAuth();
     const [formData, setForm] = useState({
         email: '',
         password: '',
@@ -31,6 +31,12 @@ const Login = () => {
 
         try {
             const result = await axiosInstance.post('auth/login', formData);
+
+            //Stockage du token
+            const token = result?.data?.token;
+            localStorage.setItem('user', JSON.stringify(token));
+            setUser(token);
+
             const successMessage = result?.data?.message;
             if (successMessage) {
                 toast.success(successMessage, {
@@ -38,10 +44,12 @@ const Login = () => {
                     hideProgressBar: true,
                 });
             }
+
             setForm({
                 email: '',
                 password: '',
             });
+
             navigate('/');
         } catch (error) {
             const errorMessage = error?.response?.data?.message;

@@ -3,8 +3,9 @@
 .training-item {
     padding: 25px 30px;
     overflow: hidden;
-    background: $bg-g-black;
-    color: $white;
+    background-color: $white;
+    box-shadow: $main-shadow;
+    color: $black;
     border-radius: $card-radius;
     position: relative;
     cursor: pointer;
@@ -18,6 +19,7 @@
     &__level {
         margin-top: 10px;
         font-style: italic;
+        color: $grey-dark;
     }
     // &:hover .overlay {
     //     opacity: 0.1;
