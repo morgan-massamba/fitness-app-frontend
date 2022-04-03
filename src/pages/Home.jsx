@@ -11,26 +11,43 @@ const Home = () => {
     let axiosInstance = useAxios();
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
+    const [trainings, setTrainings] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [trainingLoader, setTrainingLoader] = useState(true);
     const [summary, setSummary] = useState({
         age: '',
         weight: '',
         height: '',
     });
 
-    const trainings = [
-        { id: 1, title: 'Seance bras', numberOfExercices: 4, level: 1 },
-        { id: 2, title: 'Seance pec', numberOfExercices: 5, level: 2 },
-        { id: 3, title: 'Seance dos', numberOfExercices: 1, level: 3 },
-        { id: 4, title: 'Seance biceps', numberOfExercices: 3, level: 1 },
-        { id: 5, title: 'Seance cardio', numberOfExercices: 8, level: 2 },
-        { id: 6, title: 'Seance fullbody', numberOfExercices: 4, level: 3 },
-    ];
-
     const redirectToTraining = (id) => {
         navigate('/training/' + id);
     };
 
+    //LOADING TRAINING INFORMATIONS
+    useEffect(() => {
+        const loadTrainingsData = async () => {
+            try {
+                setTrainingLoader(true);
+
+                const result = await axiosInstance.get('trainings');
+
+                setTrainings(result?.data);
+
+                setTrainingLoader(false);
+            } catch (error) {
+                console.log(error);
+                setTrainingLoader(false);
+                toast.error('Une erreur est survenue', {
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                });
+            }
+        };
+        loadTrainingsData();
+    }, []);
+
+    //LOADING USER INFORMATIONS
     useEffect(() => {
         const loadData = async () => {
             try {
@@ -38,7 +55,7 @@ const Home = () => {
 
                 const result = await axiosInstance.get('user');
 
-                if (result.data.length > 0) {
+                if (result?.data?.length > 0) {
                     //SET USER
                     setUser(result.data[0]);
 
@@ -121,7 +138,7 @@ const Home = () => {
                             <TrainingItem
                                 key={item.id}
                                 title={item.title}
-                                numberOfExercices={item.numberOfExercices}
+                                numberOfExercices={item.numberOfExercises}
                                 level={item.level}
                                 handleClick={() => redirectToTraining(item.id)}
                             />

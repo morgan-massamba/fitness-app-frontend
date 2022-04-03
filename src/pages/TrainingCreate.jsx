@@ -1,19 +1,42 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/trainingCreate.scss';
 import { IoMdRemoveCircle } from 'react-icons/io';
+import useAxios from '../services/useAxios';
+import { toast } from 'react-toastify';
 
 const TrainingCreate = () => {
+    let axiosInstance = useAxios();
+    const [exercises, setExercises] = useState([]);
+    const [level, setLevel] = useState('Débutant');
     const [trainingTitle, setTrainingTitle] = useState('');
     const [formData, setFormData] = useState([
         {
-            title: '',
+            exerciseId: '',
             sets: 1,
             reps: 10,
         },
     ]);
 
+    useEffect(() => {
+        //LOADING EXERCISES FOR SELECT <option></option>
+        const loadData = async () => {
+            try {
+                const result = await axiosInstance.get('exercises/list');
+                setExercises(result?.data);
+            } catch (error) {
+                console.log(error);
+                setExercises([]);
+                toast.error('Une erreur est survenue', {
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                });
+            }
+        };
+        loadData();
+    }, []);
+
     const addExerciseItem = () => {
-        setFormData([...formData, { title: '', sets: 1, reps: 10 }]);
+        setFormData([...formData, { exerciseId: '', sets: 1, reps: 10 }]);
     };
 
     const removeExerciseItem = (index) => {
@@ -24,17 +47,36 @@ const TrainingCreate = () => {
         setFormData(copyFormData);
     };
 
-    const handleChange = ({ target: { name, value } }, index) => {
+    const handleChange = ({ target: { name, value } }, index, type) => {
         const copyFormData = [...formData];
 
-        formData[index][name] = value;
+        //Reformater au type number quand on change les valeurs dans le formulaire
+        if (type === 'number') {
+            formData[index][name] = Number(value);
+        } else {
+            formData[index][name] = value;
+        }
 
         setFormData(copyFormData);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('handle submit', formData);
+        const newTrainingContent = {
+            title: trainingTitle,
+            level: level,
+            exercises: formData,
+        };
+        console.log('handle submit', newTrainingContent);
+        try {
+            const result = await axiosInstance.post(
+                'trainings/create',
+                newTrainingContent
+            );
+            console.log('result', result);
+        } catch (error) {
+            console.log(error);
+        }
     };
     return (
         <div className="training-create" onSubmit={handleSubmit}>
@@ -54,7 +96,13 @@ const TrainingCreate = () => {
                     </div>
                     <div className="group-item__level">
                         <label htmlFor="level">Niveau</label>
-                        <select>
+                        <select
+                            id="level"
+                            name="level"
+                            required
+                            value={level}
+                            onChange={(e) => setLevel(e.target.value)}
+                        >
                             <option value="Débutant">Débutant</option>
                             <option value="Confirmé">Confirmé</option>
                             <option value="Expert">Expert</option>
@@ -66,19 +114,20 @@ const TrainingCreate = () => {
                         <div className="group-item-flex__exercise">
                             <label htmlFor="exercise">Exercice</label>
                             <select
-                                name="title"
+                                name="exerciseId"
                                 id="exercise"
                                 required
-                                value={element.title}
-                                onChange={(e) => handleChange(e, index)}
+                                value={element.exerciseId}
+                                onChange={(e) =>
+                                    handleChange(e, index, 'number')
+                                }
                             >
                                 <option value="">Choisissez un exercice</option>
-                                <option value="dog">Dog</option>
-                                <option value="cat">Cat</option>
-                                <option value="hamster">Hamster</option>
-                                <option value="parrot">Parrot</option>
-                                <option value="spider">Spider</option>
-                                <option value="goldfish">Goldfish</option>
+                                {exercises.map((i) => (
+                                    <option value={i.id} key={i.id}>
+                                        {i.title}
+                                    </option>
+                                ))}
                             </select>
                         </div>
                         <div className="group-item-flex__sets">
@@ -91,7 +140,9 @@ const TrainingCreate = () => {
                                 min={1}
                                 max={20}
                                 value={element.sets}
-                                onChange={(e) => handleChange(e, index)}
+                                onChange={(e) =>
+                                    handleChange(e, index, 'number')
+                                }
                             />
                         </div>
                         <div className="group-item-flex__reps">
@@ -104,7 +155,9 @@ const TrainingCreate = () => {
                                 min={1}
                                 max={50}
                                 value={element.reps}
-                                onChange={(e) => handleChange(e, index)}
+                                onChange={(e) =>
+                                    handleChange(e, index, 'number')
+                                }
                             />
                         </div>
                         {index ? (

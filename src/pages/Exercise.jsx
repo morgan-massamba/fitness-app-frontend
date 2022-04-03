@@ -16,7 +16,7 @@ const ExerciseItem = () => {
         const loadData = async () => {
             try {
                 setLoading(true);
-                const result = await axiosInstance.get('exercises/' + id);
+                const result = await axiosInstance.get('exercises/list/' + id);
 
                 if (result.data.length > 0) {
                     setExercise(result.data[0]);

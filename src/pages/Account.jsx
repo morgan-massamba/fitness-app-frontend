@@ -64,6 +64,17 @@ const Account = () => {
         event.preventDefault();
         console.log('submited', formData);
     };
+
+    const deleteAccount = () => {
+        const wantToDelete = window.confirm(
+            'Voulez vous vraiment supprimer votre compte de façon définitive ?'
+        );
+
+        if (!wantToDelete) return;
+
+        console.log('yes je veux supprimer mon compte');
+    };
+
     return (
         <div className="account" onSubmit={handleSubmit}>
             <h2 className="heading">Mon compte</h2>
@@ -151,6 +162,15 @@ const Account = () => {
                         <div className="group-item">
                             <button type="submit" className="submit-btn">
                                 Enregistrer
+                            </button>
+                        </div>
+                        <div className="group-item">
+                            <button
+                                type="button"
+                                className="delete-account-btn"
+                                onClick={deleteAccount}
+                            >
+                                Supprimer mon compte
                             </button>
                         </div>
                     </form>

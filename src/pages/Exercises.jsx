@@ -14,7 +14,7 @@ const Exercises = () => {
     useEffect(() => {
         const loadData = async () => {
             try {
-                const result = await axiosInstance.get('exercises');
+                const result = await axiosInstance.get('exercises/list');
                 setExercises(result.data);
             } catch (error) {
                 console.log(error);

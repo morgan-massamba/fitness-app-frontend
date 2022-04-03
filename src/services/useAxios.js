@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import useAuth from './useAuth';
+import { toast } from 'react-toastify';
 
 const useAxios = () => {
     const { user, setUser } = useAuth();
@@ -29,8 +30,14 @@ const useAxios = () => {
             return response;
         },
         function (error) {
-            if (error.response.status === '401') {
-                console.log('token invalid');
+            if (
+                error.response?.status === 401 &&
+                error.response?.data?.message === 'jwt invalid'
+            ) {
+                toast.error('Vous avez été déconnecté.', {
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                });
                 localStorage.removeItem('user');
                 setUser(null);
                 navigate('/login');

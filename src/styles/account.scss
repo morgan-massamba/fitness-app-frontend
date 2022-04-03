@@ -19,16 +19,16 @@
             }
             &:last-child {
                 margin-bottom: 0;
-                margin-top: 30px;
-                @include media-max($sm) {
-                    margin-top: 25px;
-                }
             }
         }
         .group-item-flex {
             display: flex;
             align-items: flex-end;
             flex-wrap: wrap;
+            margin-bottom: 30px;
+            @include media-max($sm) {
+                margin-bottom: 25px;
+            }
             &__age {
                 flex: 1;
                 margin-right: 20px;
@@ -80,6 +80,17 @@
             font-size: 1rem;
             cursor: pointer;
             background: $bg-g-black;
+            margin-bottom: 0px;
+        }
+        .delete-account-btn {
+            color: $white;
+            width: 100%;
+            border: none;
+            padding: 10px;
+            border-radius: $main-radius;
+            font-size: 1rem;
+            cursor: pointer;
+            background: $red;
         }
     }
 }
