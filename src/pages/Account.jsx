@@ -114,6 +114,7 @@ const Account = () => {
                                 placeholder="Email"
                                 name="email"
                                 required
+                                disabled
                                 onChange={handleChange}
                                 value={formData.email}
                             />

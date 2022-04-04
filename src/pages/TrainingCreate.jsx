@@ -3,9 +3,11 @@ import '../styles/trainingCreate.scss';
 import { IoMdRemoveCircle } from 'react-icons/io';
 import useAxios from '../services/useAxios';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const TrainingCreate = () => {
     let axiosInstance = useAxios();
+    const navigate = useNavigate();
     const [exercises, setExercises] = useState([]);
     const [level, setLevel] = useState('Débutant');
     const [trainingTitle, setTrainingTitle] = useState('');
@@ -67,15 +69,35 @@ const TrainingCreate = () => {
             level: level,
             exercises: formData,
         };
-        console.log('handle submit', newTrainingContent);
         try {
             const result = await axiosInstance.post(
                 'trainings/create',
                 newTrainingContent
             );
-            console.log('result', result);
+
+            const successMessage = result?.data?.message;
+
+            if (successMessage) {
+                toast.success(successMessage, {
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                });
+            }
+
+            navigate('/');
         } catch (error) {
-            console.log(error);
+            const errorMessage = error?.response?.data?.message;
+            if (errorMessage) {
+                toast.error(errorMessage, {
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                });
+            } else {
+                toast.error('Une erreur est survenue', {
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                });
+            }
         }
     };
     return (
