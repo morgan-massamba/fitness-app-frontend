@@ -65,8 +65,6 @@ const Home = () => {
                     summaryObj.weight = result.data[0].weight;
                     summaryObj.height = result.data[0].height;
                     setSummary(summaryObj);
-
-                    //todo FETCH TRAININGS DATA
                 } else {
                     setUser(null);
                     setSummary({ age: '', weight: '', height: '' });
