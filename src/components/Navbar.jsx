@@ -33,7 +33,7 @@ const Navbar = () => {
     return (
         <div className="navbar">
             <div className="logo">
-                <img src="24-hour-fitness.svg" alt="logo" />
+                <img src={'/24-hour-fitness.svg'} alt="logo" />
             </div>
 
             {/* MAIN NAVIGATION */}

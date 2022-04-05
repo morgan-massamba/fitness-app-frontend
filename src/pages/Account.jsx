@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import useAuth from '../services/useAuth';
 import useAxios from '../services/useAxios';
 import '../styles/account.scss';
 
 const Account = () => {
     let axiosInstance = useAxios();
+
+    const navigate = useNavigate();
+
+    const { setUser } = useAuth();
+
     const [loading, setLoading] = useState(true);
     const [formData, setForm] = useState({
         firstname: '',
@@ -65,14 +72,43 @@ const Account = () => {
         console.log('submited', formData);
     };
 
-    const deleteAccount = () => {
+    const deleteAccount = async () => {
         const wantToDelete = window.confirm(
             'Voulez vous vraiment supprimer votre compte de façon définitive ?'
         );
 
         if (!wantToDelete) return;
 
-        console.log('yes je veux supprimer mon compte');
+        try {
+            const result = await axiosInstance.delete('user/delete');
+
+            const successMessage = result?.data?.message;
+            if (successMessage) {
+                toast.success(successMessage, {
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                });
+            }
+
+            localStorage.removeItem('user');
+
+            setUser(null);
+
+            navigate('/');
+        } catch (error) {
+            const errorMessage = error?.response?.data?.message;
+            if (errorMessage) {
+                toast.error(errorMessage, {
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                });
+            } else {
+                toast.error('Une erreur est survenue', {
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                });
+            }
+        }
     };
 
     return (

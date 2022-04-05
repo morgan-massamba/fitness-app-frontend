@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BiArrowBack } from 'react-icons/bi';
+import { BiArrowBack, BiDotsHorizontalRounded } from 'react-icons/bi';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useAxios from '../services/useAxios';
@@ -10,12 +10,43 @@ const Training = () => {
     const { id } = useParams();
     const [training, setTraining] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [openModal, setOpenModal] = useState(false);
     let axiosInstance = useAxios();
 
     const navigate = useNavigate();
 
     const goBack = () => {
         navigate('/');
+    };
+
+    const deleteTraining = async (id) => {
+        try {
+            const result = await axiosInstance.delete('trainings/delete/' + id);
+
+            const successMessage = result?.data?.message;
+
+            if (successMessage) {
+                toast.success(successMessage, {
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                });
+            }
+
+            navigate('/');
+        } catch (error) {
+            const errorMessage = error?.response?.data?.message;
+            if (errorMessage) {
+                toast.error(errorMessage, {
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                });
+            } else {
+                toast.error('Une erreur est survenue', {
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                });
+            }
+        }
     };
 
     useEffect(() => {
@@ -68,6 +99,24 @@ const Training = () => {
                         <h2 className="single-training__header-heading">
                             {training.title}
                         </h2>
+                        <div className="single-training__header-action-wrapper">
+                            <BiDotsHorizontalRounded
+                                onClick={() => setOpenModal((c) => !c)}
+                            />
+                            <div
+                                className={
+                                    openModal
+                                        ? 'delete-training-btn show'
+                                        : 'delete-training-btn'
+                                }
+                            >
+                                <button
+                                    onClick={() => deleteTraining(training.id)}
+                                >
+                                    Supprimer
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
                     <h3 className="subtitle">Niveau {training.level}</h3>
