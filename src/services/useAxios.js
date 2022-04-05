@@ -13,7 +13,6 @@ const useAxios = () => {
 
     instance.interceptors.request.use(
         function (config) {
-            // console.log('[REQUEST AXIOS INTERCEPTORS]', config);
             if (user) {
                 config.headers['Authorization'] = `Bearer ${user}`;
             }
@@ -26,7 +25,6 @@ const useAxios = () => {
 
     instance.interceptors.response.use(
         function (response) {
-            // console.log('[RESPONSE AXIOS INTERCEPTORS]', response);
             return response;
         },
         function (error) {
