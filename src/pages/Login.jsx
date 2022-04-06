@@ -71,12 +71,19 @@ const Login = () => {
         setForm({ ...formData, [name]: value });
     };
 
+    const redirectToRegister = () => {
+        navigate('/register');
+    };
+
     return (
         <div className="login">
             <div className="container-left">
                 <div>
                     <h2>My Fitness App</h2>
-                    <p>Discover a new way to organise your gym everyday !</p>
+                    <p>
+                        Découvre une nouvelle façon d'organiser tes
+                        entrainements !
+                    </p>
                 </div>
             </div>
             <div className="container-right">
@@ -100,6 +107,13 @@ const Login = () => {
                         errorMessage="Votre mot de passe doit contenir au moins 8 caractères, 1 majuscule et 1 nombre."
                     />
                     <button className="btn-submit">Connexion</button>
+                    <button
+                        onClick={redirectToRegister}
+                        type="button"
+                        className="redirect-btn"
+                    >
+                        Retour à l'inscription
+                    </button>
                 </form>
             </div>
         </div>
