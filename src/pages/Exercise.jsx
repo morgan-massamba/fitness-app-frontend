@@ -66,9 +66,14 @@ const ExerciseItem = () => {
                             {exercise.title}
                         </h2>
                     </div>
-                    <p className="exercise__description">
-                        {exercise.description}
-                    </p>
+                    <div className="exercise__content">
+                        <p className="exercise__content-description">
+                            {exercise.description}
+                        </p>
+                        <div className="exercise__content-image">
+                            <img src={'/traction_exo.jpg'} alt="exercise" />
+                        </div>
+                    </div>
                 </>
             )}
         </div>

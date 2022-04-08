@@ -31,6 +31,9 @@
             border-radius: $main-radius;
             box-shadow: $main-shadow;
             padding: 20px;
+            @include media-max($md) {
+                width: 90%;
+            }
             .title {
                 margin-bottom: 20px;
                 font-weight: 500;

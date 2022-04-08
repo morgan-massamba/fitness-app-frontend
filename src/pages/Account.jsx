@@ -64,12 +64,40 @@ const Account = () => {
         loadData();
     }, []);
 
-    const handleChange = ({ target: { name, value } }) => {
-        setForm({ ...formData, [name]: value });
+    const handleChange = ({ target: { name, value } }, type) => {
+        if (type === 'number') {
+            setForm({ ...formData, [name]: Number(value) });
+        } else {
+            setForm({ ...formData, [name]: value });
+        }
     };
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log('submited', formData);
+        try {
+            const result = await axiosInstance.put('user/update', formData);
+
+            const successMessage = result?.data?.message;
+
+            if (successMessage) {
+                toast.success(successMessage, {
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                });
+            }
+        } catch (error) {
+            const errorMessage = error?.response?.data?.message;
+            if (errorMessage) {
+                toast.error(errorMessage, {
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                });
+            } else {
+                toast.error('Une erreur est survenue', {
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                });
+            }
+        }
     };
 
     const deleteAccount = async () => {
@@ -126,7 +154,7 @@ const Account = () => {
                                 id="firstname"
                                 placeholder="Prénom"
                                 required
-                                onChange={handleChange}
+                                onChange={(e) => handleChange(e)}
                                 value={formData.firstname}
                             />
                         </div>
@@ -138,7 +166,7 @@ const Account = () => {
                                 placeholder="Nom de famille"
                                 id="lastname"
                                 required
-                                onChange={handleChange}
+                                onChange={(e) => handleChange(e)}
                                 value={formData.lastname}
                             />
                         </div>
@@ -151,7 +179,7 @@ const Account = () => {
                                 name="email"
                                 required
                                 disabled
-                                onChange={handleChange}
+                                onChange={(e) => handleChange(e)}
                                 value={formData.email}
                             />
                         </div>
@@ -165,7 +193,7 @@ const Account = () => {
                                     id="age"
                                     min={1}
                                     max={150}
-                                    onChange={handleChange}
+                                    onChange={(e) => handleChange(e, 'number')}
                                     value={formData.age}
                                 />
                             </div>
@@ -178,7 +206,7 @@ const Account = () => {
                                     name="weight"
                                     min={1}
                                     max={300}
-                                    onChange={handleChange}
+                                    onChange={(e) => handleChange(e, 'number')}
                                     value={formData.weight}
                                 />
                             </div>
@@ -191,7 +219,7 @@ const Account = () => {
                                     placeholder="Taille"
                                     min={1}
                                     max={300}
-                                    onChange={handleChange}
+                                    onChange={(e) => handleChange(e, 'number')}
                                     value={formData.height}
                                 />
                             </div>
