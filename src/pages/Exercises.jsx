@@ -51,11 +51,11 @@ const Exercises = () => {
                             <td>
                                 <span
                                     className={
-                                        i.id === 1
+                                        i.categorie_id === 1
                                             ? 'categorie bg-green'
-                                            : i.id === 2
+                                            : i.categorie_id === 2
                                             ? 'categorie bg-yellow'
-                                            : i.id === 3
+                                            : i.categorie_id === 3
                                             ? 'categorie bg-red'
                                             : 'categorie bg-blue'
                                     }

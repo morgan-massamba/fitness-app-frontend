@@ -71,7 +71,7 @@ const ExerciseItem = () => {
                             {exercise.description}
                         </p>
                         <div className="exercise__content-image">
-                            <img src={'/traction_exo.jpg'} alt="exercise" />
+                            <img src={exercise.imageUrl} alt="exercise" />
                         </div>
                     </div>
                 </>
