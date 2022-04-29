@@ -54,9 +54,9 @@ const TrainingCreate = () => {
 
         //Reformater au type number quand on change les valeurs dans le formulaire
         if (type === 'number') {
-            formData[index][name] = Number(value);
+            copyFormData[index][name] = Number(value);
         } else {
-            formData[index][name] = value;
+            copyFormData[index][name] = value;
         }
 
         setFormData(copyFormData);
